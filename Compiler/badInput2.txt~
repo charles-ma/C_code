@@ -1,0 +1,6 @@
+int bad (int x) {
+  int y;
+  int a = 4, y;
+  y = a + x;
+  return y;
+}

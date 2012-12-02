@@ -1,0 +1,8 @@
+1.author: Chao Ma
+2.project name: simple c compiler (to LC-3 assembly language)
+3.version 1.0 beta
+
+4.known bugs: 0
+5.known errors: 0
+
+please report any bugs you find to mcrichard.buaa@gmail.com

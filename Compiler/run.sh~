@@ -1,0 +1,2 @@
+cc -o findsymbol find_symbol.c find_symbol_test.c tokenize_soln.c
+./findsymbol
