@@ -1,0 +1,41 @@
+fun ADD SP, SP, -1; push return value
+ADD SP, SP, -1; push return address
+STR R7, SP, 0
+ADD SP, SP, -1; push frame pointer
+STR FP, SP, 0
+ADD FP, SP, -1; set frame pointer
+ADD SP, SP, -1; push local variable
+ADD SP, SP, -1; push local variable
+;;  int x, y = 0;
+AND R0, R0, 0; clear R0
+ADD R0, R0, 0; add constant number 0 to R0
+STR R0, FP, -1; write y
+;;  x = a + b;
+LDR R0, FP, 4; read a
+LDR R1, FP, 5; read b
+ADD R0, R0, R1; put sum in R0
+STR R0, FP, 0; write x
+;;  y = x + b + c;
+LDR R0, FP, 0; read x
+LDR R1, FP, 5; read b
+ADD R0, R0, R1; put sum in R0
+LDR R1, FP, 6; read c
+ADD R0, R0, R1; put sum in R0
+STR R0, FP, -1; write y
+;;  return x + y;
+LDR R0, FP, 0; read x
+LDR R1, FP, -1; read y
+ADD R0, R0, R1; put sum in R0
+STR R0, FP, 3; write RV
+;; epilogue
+ADD SP, SP, 1; pop local variable
+ADD SP, SP, 1; pop local variable
+STR FP, SP, 0; pop frame pointer
+ADD SP, SP, 1
+STR R7, SP, 0; pop return address
+ADD SP, SP, 1
+ADD SP, SP, 1; pop return value
+ADD SP, SP, 1; pop parameter
+ADD SP, SP, 1; pop parameter
+ADD SP, SP, 1; pop parameter
+RET; done!
