@@ -9,7 +9,7 @@ typedef struct Node {
 } Node;
 
 Node** createDic();
-void findAnagram(char*, Node**);
+void findAnagram(char*, Node**, int, char);
 int isAnagram(char*, char*);
 int getHashNum(char);
 
@@ -17,17 +17,18 @@ int getHashNum(char);
 int main(int argc, char** argv) {
   
   Node** dict = createDic();  
-
   char a[128];
-  scanf("%s", a);
-  findAnagram(a, dict);
+  int b = 0;
+  char c = '\0';
+  scanf("%s %d %c", a, &b, &c);
+  findAnagram(a, dict, b, c);
   int i = 0;
   for(; i < 2000; i++) {
-    if(dict[i] != NULL){ 
+    if(dict[i] != NULL){
       Node* tmp = dict[i];
       Node* tmp1 = NULL;
       while(tmp != NULL){
-	free(tmp -> data);
+        free(tmp -> data);
 	tmp1 = tmp;
 	tmp = tmp -> next;
 	free(tmp1);
@@ -37,8 +38,8 @@ int main(int argc, char** argv) {
   free(dict);
 }
 
-//find all the anagrams of a given string
-void findAnagram(char* in, Node** dict) {
+//find all the anagrams of the given string considering the character in a certain position of the string
+void findAnagram(char* in, Node** dict, int pos, char c) {
   if(in == NULL) return;
   int i = 0;
   int hashNum = 0;
@@ -48,12 +49,15 @@ void findAnagram(char* in, Node** dict) {
   }
   Node* node = dict[hashNum];
   while(node != NULL) {
-    if(isAnagram(in, node -> data)) printf("%s\n", node -> data);
+    if(isAnagram(in, node -> data)) {
+      if(pos < strlen(node -> data) && pos >=0 && node -> data[pos] == c)
+	printf("%s\n", node -> data);
+    }
     node = node -> next;
   }
 }
 
-//test wheter two strings are anagrams
+//test whether two strings are anagrams
 int isAnagram(char* a, char* b) {
   if(strlen(a) != strlen(b)) return 0;
   if(strcmp(a, b) == 0) return 0;
@@ -85,7 +89,7 @@ int isAnagram(char* a, char* b) {
   return 1;
 }
 
-//caculate the hash code for a letter
+//calculate the hash code of a certain letter
 int getHashNum(char a) {
   if('a' <= a && 'z' >= a) return a - 96;
   if('A' <= a && 'Z' >= a) return a - 64;

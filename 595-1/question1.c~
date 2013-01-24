@@ -1,0 +1,13 @@
+#include<stdlib.h>
+#include<stdio.h>
+
+//create an array of ten integers on the heap 
+void createArray() {
+  int* datas = (int*) malloc(10 * sizeof(int));
+  int i = 0;
+  for(i = 0; i < 10; i++) {
+    datas[i] = i;
+    printf("%d\n",datas[i]);
+  }
+  free(datas);
+}
