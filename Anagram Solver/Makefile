@@ -8,3 +8,4 @@ crossword:
 
 clean:
 	rm anagramSolver cross-word
+
