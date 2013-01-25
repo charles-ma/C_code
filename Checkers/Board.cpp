@@ -1,0 +1,40 @@
+#include <iostream>
+#include "Board.h"
+
+void Board:: resp() {
+  if(grid[0][0] != NULL)
+    cout << "hello again" << endl;
+}
+
+Board:: Board() {
+  grid = new Piece**[8];
+  for(int i = 0; i < 8; i++) {
+    Piece** a = new Piece*[8];
+    for(int j = 0; j < 8; j++) {
+      a[j] = NULL;
+    }
+    grid[i] = a;
+  }
+
+}
+
+Board:: ~Board() {
+  for(int i = 0; i < 8; i++) {
+    for(int j = 0; j < 8; j++) {
+      if(grid[i][j] != NULL) delete grid[i][j];
+    }
+    delete grid[i];
+  }
+  delete grid;
+}
+
+Piece* Board:: getPiece(int x, int y) {
+  return grid[x - 1][x - y];
+}
+
+bool Board:: setPiece(int x, int y, Piece* piece) {
+  if(x >= 1 && x <=8 && y >=1 && y <= 8)
+    grid[x - 1][y - 1] = piece;
+  else return false;
+  return true;
+}
