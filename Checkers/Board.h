@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <list>
+#include <cmath>
 #include "Piece.h"
 #include "Position.h"
 
@@ -16,12 +17,15 @@ class Board {
  public:
   Board();
   ~Board();
-  void resp();
+  bool printBoard();
   Piece* getPiece(int, int);
   bool setPiece(int, int, Piece*);
   bool move(int, int, int, int);
   list<Position> getPath(Position, Position);
+  Side checkWin();
+  list<Piece*> getMovablePieces(Side);
  private:
+  bool initBoard();
   bool findJumpPath(Position, Position, list<Position>*, Side, Kind);
   bool findMovePath(Position, Position, list<Position>*);
   bool isPhysicPos(Position);

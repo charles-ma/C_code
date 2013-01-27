@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-enum Side {black, red};
+enum Side {black, red, white};
 enum Kind {king, men};
 
 class Piece {
