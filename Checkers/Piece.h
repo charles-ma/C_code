@@ -3,14 +3,14 @@
 
 #include <iostream>
 
-enum Kind {men, king};
 enum Side {black, red};
+enum Kind {king, men};
 
 class Piece {
  public:
-  Kind kind;
   Side side;
-  Piece(Side, Kind = men);
+  Kind kind;
+  Piece(Side, Kind);
   ~Piece();
 };
 

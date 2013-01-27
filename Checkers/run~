@@ -1,0 +1,2 @@
+g++ -o Checkers Checkers.cpp Piece.cpp Board.cpp Position.cpp
+./Checkers

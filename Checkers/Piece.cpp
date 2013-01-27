@@ -9,3 +9,4 @@ Piece::Piece(Side _side, Kind _kind) {
 Piece::~Piece() {
 
 }
+
