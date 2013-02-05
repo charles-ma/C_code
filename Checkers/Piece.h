@@ -8,8 +8,8 @@ enum Kind {king, men};
 
 class Piece {
  public:
-  Side side;
-  Kind kind;
+  Side side; //the side of the piece, say black or red
+  Kind kind; //the kind of the piece, say king or men
   Piece(Side, Kind);
   ~Piece();
 };

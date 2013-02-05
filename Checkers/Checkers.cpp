@@ -13,6 +13,7 @@ bool autoStep();
 
 Board* board = new Board();
 
+//main function
 int main(int argc, char** argv) {
   int mode = -1;
   cout << "Please indicate the number of the players (1 or 2):" << endl;
@@ -22,6 +23,7 @@ int main(int argc, char** argv) {
   else cout << "Wrong mode!" << endl;
 }
 
+//play the game in a certain mode
 void play(int mode) {
   board -> printBoard();
   Side turn = red;
@@ -69,6 +71,7 @@ void play(int mode) {
   }
 }
 
+//make a step in the game
 bool makeStep(Side side, int x, int y, int des_x, int des_y) {
   if(board -> getPiece(x, y) == NULL) return false;
   if(board -> getPiece(x, y) -> side != side) return false;
@@ -76,6 +79,7 @@ bool makeStep(Side side, int x, int y, int des_x, int des_y) {
   return false;
 }
 
+//generate a step automatically
 bool autoStep() {
   list<Piece*> blackPieces;
   blackPieces = board -> getMovablePieces(black);

@@ -2,7 +2,6 @@
 #include "Board.h"
 
 bool Board:: printBoard() {
-  //  cout << "---------y" << endl;
   for(int i = 0; i < 9; i++) {
     cout << i;
   }

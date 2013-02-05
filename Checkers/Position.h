@@ -5,8 +5,8 @@
 
 class Position {
  public:
-  int x;
-  int y;
+  int x; //x coordinate
+  int y; //y coordinate
   Position(int, int);
   ~Position();
   Position(const Position&);
@@ -14,11 +14,11 @@ class Position {
   int getY();
   void setX(int);
   void setY(int);
-  bool operator==(Position&);
-  Position topLeft();
-  Position topRight();
-  Position bottomLeft();
-  Position bottomRight();
+  bool operator==(Position&); //over load ==
+  Position topLeft(); //get the point to the top left
+  Position topRight(); //get the point to the top right
+  Position bottomLeft(); //get the point to the bottom left
+  Position bottomRight(); //get the point to the bottom right
 };
 
 #endif
