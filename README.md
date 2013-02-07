@@ -1,4 +1,4 @@
 C_code
 ======
 
-some C code
+some C & C++ code
