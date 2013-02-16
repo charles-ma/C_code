@@ -32,3 +32,9 @@ x
 
 test:
 to test the game, you can simply start a 1 player game and play against the computer
+
+
+scripts and save state:
+at the beginnig of the game, you will be asked about whether you want to load game from existing files. If you answer yes, the console will ask you about the file name, you have to indicate a correct file name that does not exist, otherwise you will be asked again. Then you will be asked about whether you want to play the game with scripts, if the answer is yes, you have to indicate the script name.
+The content of the script is simple numbers, every four numbers form a group indicating a move. eg, 6152 means move a piece from (6, 1) to (5, 2). You'd better make sure the moves in the script are legal, or there would be something unexpected.
+The content of the state file is also simple numbers. Each number indicates a certain type of piece on a certain position of the board. eg, 3 indicates the piece is a black men piece... You'd better make sure that the number of digits is larger than 64 because we have to make sure every space on the board get a piece. Also, it's better to keep all the numbers in the file legal(0-4) to avoid unexpected behaviors.
