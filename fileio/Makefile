@@ -1,0 +1,4 @@
+searchString: searchString.cpp
+	g++ -o searchString searchString.cpp -g
+clean:
+	rm -i searchString

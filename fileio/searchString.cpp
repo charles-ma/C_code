@@ -1,0 +1,70 @@
+#include<iostream>
+#include<sys/stat.h>
+#include<dirent.h>
+#include<fstream>
+#include<string>
+
+using namespace std;
+
+bool findStringFile(string path, string target) {
+  ifstream inFile;
+  inFile.open(path.c_str());
+  string buffer;
+  while(!inFile.eof()) {
+    getline(inFile, buffer); 
+    if(buffer.find(target) < buffer.length()) {
+      cout << path << " " << buffer << endl;
+    }
+  }
+  inFile.close();
+}
+
+bool findString(string path, string target) {
+  struct stat* st = new struct stat();
+  stat(path.c_str(), st);
+  int tmp = 0;
+  tmp = st -> st_mode & S_IFDIR;
+  if(tmp == S_IFDIR) {
+    DIR* dir;
+    struct dirent* content;
+    if((dir = opendir(path.c_str())) == NULL) {
+      cout << "Can't open directory" << path << endl;
+      return false;
+    } else {
+      while((content = readdir(dir)) != NULL) {
+	string sub = string(content -> d_name);
+	if(sub != "." && sub != "..") {
+	  if(path[path.length() - 1] == '/') findString(path + sub, target);
+	  else findString(path + "/" + sub, target);
+	}
+      }
+      closedir(dir);
+    }
+  } else {
+    findStringFile(path, target);
+  }
+  return true;
+}
+
+int main(int argc, char* argv[]) {
+  struct stat* st = new struct stat();
+  string target;
+
+  if(argc < 3) {
+    cout << "Please provide enough parameters!" << endl;
+    delete st;
+    return 0;
+  }
+
+  if(stat(argv[1], st) == 0) {
+    findString(argv[1], argv[2]);
+    delete st;
+    return 1;
+  } else {
+    cout << "Can't open file/directory!" << endl;
+    delete st;
+    return 0;
+  }
+}
+
+
