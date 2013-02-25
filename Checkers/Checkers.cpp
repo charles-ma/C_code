@@ -5,22 +5,32 @@
 #include <stdlib.h>
 #include <ctime>
 #include <fstream>
+#include "sys/types.h"
+#include "sys/wait.h"
+#include <sstream>
 
 using namespace std;
 
-void play(int);
+void play(int, int, int);
 bool makeStep(Side, int, int, int, int);
-bool autoStep();
+bool autoStep(Side);
 bool saveState();
 bool openState();
 bool playScript();
 
 Board* board = new Board();
 
+
 //main function
-int main(int argc, char** argv) {
-  int mode = -1;
-  char answer = 'n';
+int main(int argc, char* argv[]) {
+  int mode = 0;
+  int proNum = 3;
+  if(argc == 2) {
+    int bufNum = atoi(argv[1]);
+    if(bufNum > 0) proNum = bufNum;
+  }
+  
+  /*char answer = 'n';
   cout << "Do you want to load game from existing file?(y or other):" << endl;
   cin >> answer;
   if(answer == 'y') openState();
@@ -33,12 +43,46 @@ int main(int argc, char** argv) {
     if(mode == 1 || mode == 2)
       play(mode);
     else cout << "Wrong mode!" << endl;
+    }*/
+
+  int fd[2];
+  int *childStatus = 0;
+  pid_t pid;
+  pid_t pids[proNum];
+  char line[1000];
+  int n;
+
+  if(pipe(fd) < 0) {
+    cout << "pipe error!" << endl;
+    return 0;
   }
+
+  for(int i = 0; i < proNum; i++) {
+    if((pid = fork()) == 0) {
+      close(fd[0]);
+      play(mode, fd[0], fd[1]);
+      close(fd[1]);
+      return 0;
+    } else {
+      pids[i] = pid;
+    }
+  }
+  play(mode, fd[0], fd[1]);
+  for(int i = 0; i < proNum; i++) {
+    waitpid(pids[i], childStatus, 0);
+  }
+
+  n = read(fd[0], line, 1000);
+  cout << "The final result is:" << endl;
+  write(STDOUT_FILENO, line, n);
+  close(fd[0]);
+  close(fd[1]);
+  return 0;
 }
 
 //play the game in a certain mode
-void play(int mode) {
-  board -> printBoard();
+void play(int mode, int fd0, int fd1) {
+  //  board -> printBoard();
   Side turn = red;
   int x, y, des_x, des_y;
   if(mode == 1) {
@@ -53,7 +97,7 @@ void play(int mode) {
 	turn = black;
       }
       else if(turn == black) {
-	autoStep();
+	autoStep(black);
 	turn = red;
       }
       board -> printBoard();
@@ -84,6 +128,44 @@ void play(int mode) {
     }
     if(board -> checkWin() == red) cout << "RED WIN!" << endl;
     if(board -> checkWin() == black) cout << "BLACK WIN!" << endl;
+  } else if(mode == 0) {
+    int i = 0;
+    while(board -> checkWin() == white) {
+      if(turn == red) {
+	autoStep(red);
+	turn = black;
+      }
+      else if(turn == black) {
+	autoStep(black);
+	turn = red;
+      }
+      if(i % 10000 == 0) {
+	cout << getpid() << ":" << endl;
+	board -> printBoard();
+      }
+      i++;
+      if(i > 300000) {
+	stringstream spid;
+	spid << getpid() << ": OVER TIME!\n";
+	cout << spid << endl;
+	write(fd1, spid.str().c_str(), spid.str().length());
+	break;
+      }
+    }
+    if(board -> checkWin() == red) {
+      stringstream spid;
+      spid << getpid() << ": RED WIN!\n";
+      board -> printBoard();
+      cout << spid << endl;
+      write(fd1, spid.str().c_str(), spid.str().length());
+    }
+    if(board -> checkWin() == black) {
+      stringstream spid;
+      spid << getpid() << ": BLACK WIN!\n";
+      board -> printBoard();
+      cout << spid << endl;
+      write(fd1, spid.str().c_str(), spid.str().length());
+    }
   }
 }
 
@@ -96,13 +178,14 @@ bool makeStep(Side side, int x, int y, int des_x, int des_y) {
 }
 
 //generate a step automatically
-bool autoStep() {
+bool autoStep(Side side) {
   list<Piece*> blackPieces;
-  blackPieces = board -> getMovablePieces(black);
+  if(side == black) blackPieces = board -> getMovablePieces(black);
+  else blackPieces = board -> getMovablePieces(red);
   if(blackPieces.size() == 0) return false;
   list<Piece*> :: iterator i;
   srand((int) time(0));
-  int ranNum = rand() % blackPieces.size();
+  int ranNum = (rand() + getpid()) % blackPieces.size();
   i = blackPieces.begin();
   for(int j = 0; j < ranNum; j++) {
     i++;
@@ -115,9 +198,24 @@ bool autoStep() {
 	x = k;
 	y = l;
       } 
-  for(int k = 1; k <= 8; k++)
-    for(int l = 1; l <= 8; l++)
-      if(makeStep(p -> side, x, y, k, l)) return true;
+  int num = rand() % 4;
+  if(num == 0) {
+    for(int k = 1; k <= 8; k++)
+      for(int l = 1; l <= 8; l++)
+	if(makeStep(p -> side, x, y, k, l)) return true;
+  } else if (num == 1){
+    for(int k = 8; k <= 1; k--)
+      for(int l = 1; l <= 8; l++)
+	if(makeStep(p -> side, x, y, k, l)) return true;
+  } else if (num == 2){
+    for(int k = 1; k <= 8; k++)
+      for(int l = 8; l <= 1; l--)
+	if(makeStep(p -> side, x, y, k, l)) return true;
+  } else if (num == 3){
+    for(int k = 8; k <= 1; k--)
+      for(int l = 8; l <= 1; l--)
+	if(makeStep(p -> side, x, y, k, l)) return true;
+  } 
   return false;
 }
 
