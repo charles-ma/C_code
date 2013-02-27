@@ -1,0 +1,8 @@
+#ifndef TIGER_H
+#define TIGER_H
+
+class Tiger {
+  
+};
+
+#endif

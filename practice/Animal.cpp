@@ -1,0 +1,32 @@
+#include "Animal.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "string.h"
+
+using namespace std;
+
+Animal:: Animal() {
+  name = (char*)malloc(9 * sizeof(int));
+  strncpy(name, "defaulty", 9);
+  age = 2;
+}
+
+
+Animal:: Animal(char* _name, int _age) {
+  name = (char*)malloc((strlen(_name) + 1) * sizeof(char));
+  strncpy(name, _name, strlen(_name) + 1);
+  age = _age;
+}
+
+void Animal:: makeSound() {
+  printf("I am an Animal and My name is %s, age is %d\n", name, age);
+}
+
+
+void Animal:: eat() {
+  printf("virtual from animal\n");
+}
+
+Animal:: ~Animal() {
+  free(name);
+}
