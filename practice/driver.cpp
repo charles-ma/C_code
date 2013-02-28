@@ -50,7 +50,6 @@ int main(int argc, char** argv) {
     free(pre);
   }
 
-
   int fd = open("./testInput.txt", O_RDWR | O_CREAT, 0766);
   //dup2(fd, 1);
   
