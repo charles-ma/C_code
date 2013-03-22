@@ -1,0 +1,5 @@
+1.The first program is called lockTest, it will be blocked after started. The user has to pass the SIGUSR1 signal to make it print out "I am unlocked" and carry on.
+
+2.The second program uses 4 sub processes to calculate the sum of {0, 1, 2, 3, 4, 5, 6, 7} which is 28. Each of the four sub processes will add two elements from the array. The main process will add four sums up.
+
+3.The make run command will run the two programs at the same time. The result of the second program will be printed out first which is 28 while the shell will stay blocked because lockTest is blocked. You have to use kill -SIGUSR1 PID to stop the program.

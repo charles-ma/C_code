@@ -8,6 +8,7 @@
 #include "sys/types.h"
 #include "sys/wait.h"
 #include <sstream>
+#include <csignal>
 
 using namespace std;
 
@@ -20,16 +21,40 @@ bool playScript();
 
 Board* board = new Board();
 
+pid_t parent;
+int count = 0;
+pid_t *pids;
+int i = 1;
+int fd[2];
+int proNum = 3;
+
+void response(int v) {
+  char s[4];
+  read(fd[0], s, 3);
+  cout<< "Child: "<< getpid() << endl;
+  write(STDOUT_FILENO, s, 3);
+  write(fd[1], s, 3);
+  kill(parent, SIGUSR2);
+}
+
+void responsePa(int v) {
+  char s[4];
+  read(fd[0], s, 3);
+  cout<< "Paren: " << getpid() << endl;
+  write(STDOUT_FILENO, s, 3);
+  write(fd[1], s, 3);
+  kill(pids[i], SIGUSR1);
+  i = ++i % proNum;
+}
 
 //main function
 int main(int argc, char* argv[]) {
   int mode = 0;
-  int proNum = 3;
-  if(argc == 2) {
+  //int proNum = 3;
+  /*if(argc == 2) {
     int bufNum = atoi(argv[1]);
     if(bufNum > 0) proNum = bufNum;
-  }
-  
+    }*/
   /*char answer = 'n';
   cout << "Do you want to load game from existing file?(y or other):" << endl;
   cin >> answer;
@@ -45,29 +70,47 @@ int main(int argc, char* argv[]) {
     else cout << "Wrong mode!" << endl;
     }*/
 
-  int fd[2];
   int *childStatus = 0;
   pid_t pid;
-  pid_t pids[proNum];
+  //pid_t pids[proNum];
   char line[1000];
   int n;
+  pids = (int*)malloc(proNum * sizeof(int));
 
   if(pipe(fd) < 0) {
     cout << "pipe error!" << endl;
     return 0;
   }
 
+  parent = getpid();
+
   for(int i = 0; i < proNum; i++) {
     if((pid = fork()) == 0) {
-      close(fd[0]);
+      signal(SIGUSR1, response);
+      while(1) sleep(1000);
+      /*close(fd[0]);
       play(mode, fd[0], fd[1]);
       close(fd[1]);
+      return 0;*/
       return 0;
     } else {
+      //pids[i] = pid;
       pids[i] = pid;
     }
   }
-  play(mode, fd[0], fd[1]);
+
+  signal(SIGUSR2, responsePa);
+
+
+  stringstream spid;
+  spid << "123";
+  write(fd[1], spid.str().c_str(), 3);
+    
+  cout<< pids[0] << endl;
+  kill(pids[0], SIGUSR1);
+  
+  while(1) sleep(1000);
+  /*  play(mode, fd[0], fd[1]);
   for(int i = 0; i < proNum; i++) {
     waitpid(pids[i], childStatus, 0);
   }
@@ -77,7 +120,7 @@ int main(int argc, char* argv[]) {
   write(STDOUT_FILENO, line, n);
   close(fd[0]);
   close(fd[1]);
-  return 0;
+  return 0;*/
 }
 
 //play the game in a certain mode

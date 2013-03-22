@@ -7,11 +7,14 @@
 #include "unistd.h"
 #include "fcntl.h"
 #include "sys/wait.h"
+#include <iostream>
 
 struct node {
   int value;
   struct node* next;
 };
+
+using namespace std;
 
 int main(int argc, char** argv) {
   Tiger tiger;
@@ -33,6 +36,11 @@ int main(int argc, char** argv) {
   ani -> eat();
 
   delete ani;
+
+  char a[2];
+  a[0] = 'a';
+  a[1] = '\0';
+  cout << a << endl;
 
   node *head = NULL;
 
@@ -71,7 +79,8 @@ int main(int argc, char** argv) {
     int result = execl("/bin/date", "date", NULL);
     printf("%d\n", result);
     delete i;
-    exit(0);
+    exit(0); //calling exit will not call destructor of locally scoped objects
+    //return 0; //calling return will destroy all the locally scoped objects
   } else {
     //waitpid(pid, i, 0);
     wait(i);
