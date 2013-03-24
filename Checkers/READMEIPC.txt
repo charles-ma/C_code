@@ -1,5 +1,25 @@
-The program is called Checkers. It will accept one or zero parameters. The parameter indicates the number of the sub processes.
+The program is called Checkers. It has 3 sub processes, each of which will play a game with the parent.
 
-Eg, if you call the program using "./Checkers 5", it will fork 5 times(say, there will be 6 processes altogether). Every process will print out the board every 10000 steps. Due to the random algorithm of the program, sometimes it will take time to finish a game, so I set a limit to the amount steps of every process, if it did not finish in 300000 steps, it would be terminated and print out "OVER TIME" rather than "RED WIN!" of "BLACK WIN!".
+For every single move, the program will print the move on the screen. If the move is made by the parent, it looks like:
+    parent: 
+    6 3 5 2 
+(this is an example, indicating the parent move the red piece from point 6 3 to point 5 2)
+If the move is made by the children, it looks like:
+    child: 24405
+    4 3 5 2
+(the number 24405 is the pid of this child)
 
-Each time a sub process finishes, it will send a message to the parent process through the pipe. The parent process will print out the result of each process at before itself finishes.
+The program will print the board on the screen constantly.
+
+If any of the 3 games is over, the program will print message like
+    RED WIN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+or
+    BLACK WIN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+on the screen.
+
+When all of the 3 games are over, the program will exit.
+
+In this program, the parent is always using red pieces.
+
+
+Chao Ma

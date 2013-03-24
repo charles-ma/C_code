@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <iostream>
 #include "Board.h"
 
@@ -205,12 +206,22 @@ list<Position> Board:: findPossibleJump(Position point, Position last, Side side
   int x = point.x;
   int y = point.y;
   
-  if(kind == king || (kind == men && side == black)){
+  if(kind == king) {
     if(getPiece(x + 1, y + 1) != NULL && getPiece(x + 1, y + 1) -> side != side && isPhysicPos(Position(x + 2, y + 2)))
       result.push_back(point.bottomRight().bottomRight());
     if(getPiece(x + 1, y - 1) != NULL && getPiece(x + 1, y - 1) -> side != side && isPhysicPos(Position(x + 2, y - 2)))
       result.push_back(point.bottomLeft().bottomLeft());
-  }else if(kind == king || (kind == men && side == red)) {
+    //if(getPiece(x - 1, y + 1) != NULL && getPiece(x - 1, y + 1) -> side != side && isPhysicPos(Position(x - 2, y + 2))) 
+    //result.push_back(point.topRight().topRight());
+    //if(getPiece(x - 1, y - 1) != NULL && getPiece(x - 1, y - 1) -> side != side && isPhysicPos(Position(x - 2, y - 2))) 
+    //result.push_back(point.topLeft().topLeft());
+  
+  } else if(kind == men && side == black){
+    if(getPiece(x + 1, y + 1) != NULL && getPiece(x + 1, y + 1) -> side != side && isPhysicPos(Position(x + 2, y + 2)))
+      result.push_back(point.bottomRight().bottomRight());
+    if(getPiece(x + 1, y - 1) != NULL && getPiece(x + 1, y - 1) -> side != side && isPhysicPos(Position(x + 2, y - 2)))
+      result.push_back(point.bottomLeft().bottomLeft());
+  } else if(kind == men && side == red){
     if(getPiece(x - 1, y + 1) != NULL && getPiece(x - 1, y + 1) -> side != side && isPhysicPos(Position(x - 2, y + 2)))
       result.push_back(point.topRight().topRight());
     if(getPiece(x - 1, y - 1) != NULL && getPiece(x - 1, y - 1) -> side != side && isPhysicPos(Position(x - 2, y - 2)))
