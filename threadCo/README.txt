@@ -45,6 +45,27 @@ The console will print sentences like:
 "Barber is giving a hair cut"
 
 
+------------------------
+4. Supermarket Checkout
+------------------------
+You have to pass one parameter to the program which indicates the number of shoppers(in my program, 11 is the best to observe the result)
+Assume that every shopper will buy at least 1 item and at most 8 items
+The program will print out the lines every time a new shopper joins the line or checks out of the shop
+The output looks like:
+---------------------------
+LineExp: 6(2) 4(3) 
+Line1: 9(5) 8(8) 3(8) 0(7) 1(8) 
+Line2: 
+---------------------------
+Line2 Open!
+LineExp: 6(2) 4(3) 
+Line1: 9(5) 8(8) 
+Line2: 10(7) 1(8) 0(7) 3(8) 
+---------------------------
+
+LineExp, Line1, Line2 are the line names, 6(2) means shopper 6 with 2 items
+When a new shopper (10) wants to go into Line1, Line2 will open and some(random) shoppers in Line1 will join Line2(3, 0 and 1)
+Then Line2 will be open forever
 
 
-Note: I put some sleep statement in problems 2,3,4 to make it easy to observe.
+Note: I put some sleep statement in problems 2,3,4 to make them easy to observe. To shutdown the program you have to use Ctrl+c
