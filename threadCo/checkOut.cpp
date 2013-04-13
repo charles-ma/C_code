@@ -177,8 +177,6 @@ int main(int argv, char** args) {
     pthread_create(&customers[i], NULL, cusAction, para);
   }
 
-
-
   //serve the customers
   while(true) {
     sleep(1);
