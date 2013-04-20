@@ -1,20 +1,20 @@
 author: machao
 
-1.
-The client program needs 3 parameters -- hostname port page
+The work has two parts, the server and the client(in separate folders) 
+---------------------------------------------------------------------------------
 
-sample input is:
-./client www.seas.upenn.edu 80 /~machao/index.html
+1. client
+(1)The client program needs 3 parameters -- hostname port page
+
+(2)sample input is:
+./client 127.0.0.1 8000 /index.html (the page has to be in the form of /filename)
 
 sample output is:
 HTTP/1.1 200 OK
-Date: Wed, 17 Apr 2013 22:26:52 GMT
-Server: Apache
-Last-Modified: Tue, 22 Jan 2013 03:10:05 GMT
-ETag: "8ad-4d3d7ea12643a"
-Accept-Ranges: bytes
+Server: MaChaoServer
 Content-Length: 2221
 Content-Type: text/html
+Last-Modified: 15/04/2013 17:55:30 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 4.0 Strict//EN"
 "http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
@@ -88,6 +88,19 @@ Content-Type: text/html
     </script>
   </body>
 </html>
+
+(3)The client has the ability to cache visited websites. It stores the websites in the folder "temp"(make sure this folder is available before run client)
+
+(4)If you make run the program, the client will use 127.0.0.1 as IP address and port 8000, the requested page is /index.html
+
+-------------------------------------------------------------------------------------------------------
    
-2.
-This program will read in the content by the attribute 'Content-Length' in the header of the response, so it may not work very well when you want to connect to a server that will never return such an attribute.
+2. server
+(1)The server can give the requested file to the client
+
+(2)In the server directory, there are 3 sample htmls.
+
+(3)The server will create the server_log.txt to keep track of server actions
+
+(4)If you make run the program, the server will use port 8000
+

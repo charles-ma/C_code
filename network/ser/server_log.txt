@@ -1,0 +1,19 @@
+server connected to localhost (127.0.0.1)
+server received 27 bytes
+server received 16 bytes
+server received 40 bytes
+server received 2 bytes
+server connected to localhost (127.0.0.1)
+server received 26 bytes
+server received 16 bytes
+server received 40 bytes
+server received 2 bytes
+server connected to localhost (127.0.0.1)
+server received 26 bytes
+server received 16 bytes
+server received 40 bytes
+server received 2 bytes
+server connected to localhost (127.0.0.1)
+server received 26 bytes
+server received 16 bytes
+server received 2 bytes
