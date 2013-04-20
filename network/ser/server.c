@@ -24,7 +24,7 @@ void *do_work(void* pconnfd)
 
     //print server action
     printf("server received %d bytes\n", n);
-    fprintf(log_file, "server received %d bytes\n", n);
+    fprintf(log_file, buf, strlen(buf));
     fflush(log_file);
 
     //parse GET
@@ -55,6 +55,8 @@ void *do_work(void* pconnfd)
   fp = fopen(page + 1, "r");
   if(fp == NULL) {
     Rio_writen(*connfd, "HTTP/1.1 404 Not Found\r\n", 22);
+    fprintf(log_file, "HTTP/1.1 404 Not Found\r\n", 22);
+    fflush(log_file);
   } else {
     //produce response header
     int *size = (int*) malloc(sizeof(int));
@@ -68,7 +70,11 @@ void *do_work(void* pconnfd)
     
     if(strcmp(i_time, m_time) == 0) { //not modified
       Rio_writen(*connfd, "HTTP/1.1 304 Not Modified\r\n", 27);
+      fprintf(log_file, "HTTP/1.1 304 Not Modified\r\n", 27);
+      fflush(log_file);
     } else { //modified
+      fprintf(log_file, "HTTP/1.1 200 OK\r\n", 17);
+      fflush(log_file);
       Rio_writen(*connfd, "HTTP/1.1 200 OK\r\nServer: MaChaoServer\r\nContent-Length: ", 55);
       Rio_writen(*connfd, c_length, strlen(c_length));
       Rio_writen(*connfd, "\r\nContent-Type: text/html\r\n", 27);
