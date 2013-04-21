@@ -104,3 +104,13 @@ Last-Modified: 15/04/2013 17:55:30
 
 (4)If you make run the program, the server will use port 8000
 
+-------------------------------------------------------------------------------------------------------
+
+3. proxy server
+(1)This proxy server is very simple, it can only handle very simple requests
+
+(2)Sample run is to access www.seas.upenn.edu/~machao with your browser
+
+(3)Make sure to turn off plugins of your browser
+
+(4)If you make run the program, it will use port 8000

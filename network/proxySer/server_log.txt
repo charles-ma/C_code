@@ -1,0 +1,85 @@
+server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/index.html HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.google.com/googlevoice/audio/bell.mp3 HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://toolbarqueries.google.com/search?client=navclient-auto&hl=en&ch=64213342085&ie=UTF-8&oe=UTF-8&features=Rank&q=info:http://www.seas.upenn.edu HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.google-analytics.com/__utm.gif?utmwv=5.4.1&utms=21&utmn=41836828&utmhn=bfbmjmiodbnnpllbbbfblcplfjjepjdn&utmcs=UTF-8&utmsr=1280x800&utmsc=24-bit&utmul=en-us&utmje=1&utmfl=11.2%20r202&utmhid=1604167549&utmr=-&utmp=0.000000background.html0.000000version%3D2.2&utmht=1366547139961&utmac=UA-16237836-10&utmcc=__utma%3D164902252.1639523828.1350822389.1366512540.1366543913.1046%3B%2B__utmz%3D164902252.1350822389.1.1.utmcsr%3D(direct)server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/ HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.google-analytics.com/__utm.gif?utmwv=5.4.1&utms=22&utmn=1909763186&utmhn=bfbmjmiodbnnpllbbbfblcplfjjepjdn&utmcs=UTF-8&utmsr=1280x800&utmsc=24-bit&utmul=en-us&utmje=1&utmfl=11.2%20r202&utmhid=1339190095&utmr=-&utmp=0.000000background.html0.000000version%3D2.2&utmht=1366547281168&utmac=UA-16237836-10&utmcc=__utma%3D164902252.1639523828.1350822389.1366512540.1366543913.1046%3B%2B__utmz%3D164902252.1350822389.1.1.utmcsr%3D(direct)server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/ HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/images/android_backpack.jpg HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.google.com/googlevoice/audio/bell.mp3 HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://toolbarqueries.google.com/search?client=navclient-auto&hl=en&ch=64213342085&ie=UTF-8&oe=UTF-8&features=Rank&q=info:http://www.seas.upenn.edu HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.google-analytics.com/__utm.gif?utmwv=5.4.1&utms=23&utmn=1703134513&utmhn=bfbmjmiodbnnpllbbbfblcplfjjepjdn&utmcs=UTF-8&utmsr=1280x800&utmsc=24-bit&utmul=en-us&utmje=1&utmfl=11.2%20r202&utmhid=834531558&utmr=-&utmp=0.000000background.html0.000000version%3D2.2&utmht=1366547341704&utmac=UA-16237836-10&utmcc=__utma%3D164902252.1639523828.1350822389.1366512540.1366543913.1046%3B%2B__utmz%3D164902252.1350822389.1.1.utmcsr%3D(direct)server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/ HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.google.com/googlevoice/audio/bell.mp3 HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://toolbarqueries.google.com/search?client=navclient-auto&hl=en&ch=64213342085&ie=UTF-8&oe=UTF-8&features=Rank&q=info:http://www.seas.upenn.edu HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.google-analytics.com/__utm.gif?utmwv=5.4.1&utms=24&utmn=96315100&utmhn=bfbmjmiodbnnpllbbbfblcplfjjepjdn&utmcs=UTF-8&utmsr=1280x800&utmsc=24-bit&utmul=en-us&utmje=1&utmfl=11.2%20r202&utmhid=82268894&utmr=-&utmp=0.000000background.html0.000000version%3D2.2&utmht=1366547518294&utmac=UA-16237836-10&utmcc=__utma%3D164902252.1639523828.1350822389.1366512540.1366543913.1046%3B%2B__utmz%3D164902252.1350822389.1.1.utmcsr%3D(direct)server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/ HTTP/1.1
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+GET http://www.google.com/googlevoice/audio/bell.mp3 HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://toolbarqueries.google.com/search?client=navclient-auto&hl=en&ch=64213342085&ie=UTF-8&oe=UTF-8&features=Rank&q=info:http://www.seas.upenn.edu HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.google-analytics.com/__utm.gif?utmwv=5.4.1&utms=25&utmn=831607695&utmhn=bfbmjmiodbnnpllbbbfblcplfjjepjdn&utmcs=UTF-8&utmsr=1280x800&utmsc=24-bit&utmul=en-us&utmje=1&utmfl=11.2%20r202&utmhid=1477843500&utmr=-&utmp=0.000000background.html0.000000version%3D2.2&utmht=1366547602174&utmac=UA-16237836-10&utmcc=__utma%3D164902252.1639523828.1350822389.1366512540.1366543913.1046%3B%2B__utmz%3D164902252.1350822389.1.1.utmcsr%3D(direct)server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/ HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.google.com/googlevoice/audio/bell.mp3 HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://toolbarqueries.google.com/search?client=navclient-auto&hl=en&ch=64213342085&ie=UTF-8&oe=UTF-8&features=Rank&q=info:http://www.seas.upenn.edu HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.google-analytics.com/__utm.gif?utmwv=5.4.1&utms=26&utmn=795813141&utmhn=bfbmjmiodbnnpllbbbfblcplfjjepjdn&utmcs=UTF-8&utmsr=1280x800&utmsc=24-bit&utmul=en-us&utmje=1&utmfl=11.2%20r202&utmhid=1859344873&utmr=-&utmp=0.000000background.html0.000000version%3D2.2&utmht=1366547658190&utmac=UA-16237836-10&utmcc=__utma%3D164902252.1639523828.1350822389.1366512540.1366543913.1046%3B%2B__utmz%3D164902252.1350822389.1.1.utmcsr%3D(direct)server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/ HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.google.com/googlevoice/audio/bell.mp3 HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://toolbarqueries.google.com/search?client=navclient-auto&hl=en&ch=64213342085&ie=UTF-8&oe=UTF-8&features=Rank&q=info:http://www.seas.upenn.edu HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.google-analytics.com/__utm.gif?utmwv=5.4.1&utms=27&utmn=1212475135&utmhn=bfbmjmiodbnnpllbbbfblcplfjjepjdn&utmcs=UTF-8&utmsr=1280x800&utmsc=24-bit&utmul=en-us&utmje=1&utmfl=11.2%20r202&utmhid=1801727948&utmr=-&utmp=0.000000background.html0.000000version%3D2.2&utmht=1366547870013&utmac=UA-16237836-10&utmcc=__utma%3D164902252.1639523828.1350822389.1366512540.1366543913.1046%3B%2B__utmz%3D164902252.1350822389.1.1.utmcsr%3D(direct)server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/ HTTP/1.1
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/ HTTP/1.1
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+GET http://videosearch.ubuntu.com/v0/search HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/ HTTP/1.1
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/ HTTP/1.1
+GET http://www.seas.upenn.edu/~machao/css/main.css HTTP/1.1
+server connected to localhost (127.0.0.1)
+GET http://www.seas.upenn.edu/~machao/ HTTP/1.1

@@ -43,7 +43,7 @@ int main(int argc, char **argv)
   }
 
   //construct request
-  strcat(buf, "GET ");
+  strcpy(buf, "GET ");
   strcat(buf, page);
   strcat(buf, " HTTP/1.1\r\nHost:");
   strcat(buf, host);

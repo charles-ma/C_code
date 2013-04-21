@@ -1,0 +1,110 @@
+#include "csapp.h"
+#include <string.h>
+#include <sys/stat.h>
+#include <stdio.h>
+#include <time.h>
+
+FILE * log_file;
+
+/*
+ * Do actual work for each thread
+ */
+void *do_work(void* pconnfd)  
+{ 
+  size_t n;  
+  char buf[MAXLINE];  
+  rio_t rio, rio1; 
+  int *connfd = (int*) pconnfd;
+  char *page = (char*) malloc(100 * sizeof(char));
+  char *host = (char*) malloc(100 * sizeof(char));
+ 
+  //parse http requests
+  Rio_readinitb(&rio, *connfd); 
+
+  while((n = Rio_readlineb(&rio, buf, MAXLINE)) != 0) { 
+    //print server action
+    printf("server received %d bytes\n", n);
+    fprintf(log_file, buf, strlen(buf));
+    fflush(log_file);
+
+    //parse GET
+    if(strstr(buf, "GET")) {
+      char * token = strtok(buf, "/");
+      int i = 0;
+      while(token != NULL) {
+	token = strtok(NULL, "/");
+	if(i == 0) strcpy(host, token);
+	if(i == 1) strcpy(page, token);
+	i++;
+      }
+      break;
+    }
+  } 
+
+  int clientfd;
+  clientfd = Open_clientfd(host, 80);
+  Rio_readinitb(&rio1, clientfd);
+  
+  strcpy(buf, "GET /");
+  strcat(buf, page);
+  strcat(buf, "/index.html HTTP/1.1\r\nHost:");
+  strcat(buf, host);
+  strcat(buf, "\r\n\r\n");
+  printf("%s", buf);
+
+  Rio_writen(clientfd, buf, strlen(buf));
+  while((n = Rio_readlineb(&rio1, buf, MAXLINE)) != 0) {
+    Rio_writen(*connfd, buf, strlen(buf));
+  }
+  
+
+  //end the response routine
+  //Close(*connfd);
+  //free(connfd);
+} 
+
+/*
+ * Create worker threads
+ */
+void create_worker(int connfd) {
+  pthread_t *p = (pthread_t*) malloc(sizeof(pthread_t));
+  int *pconnfd = (int*) malloc(sizeof(int));
+  *pconnfd = connfd;
+  pthread_create(p, NULL, do_work, pconnfd);
+  free(p);
+}
+
+/*
+ * Program entrance
+ */
+int main(int argc, char **argv) {
+  int listenfd, connfd, port, clientlen;
+  struct sockaddr_in clientaddr;
+  struct hostent *hp;
+  char *haddrp;
+
+  //port number from command line
+  port = atoi(argv[1]); 
+
+  //open port
+  listenfd = open_listenfd(port); 
+
+  //open log file
+  log_file = fopen("server_log.txt", "a");
+  
+  //main loop
+  while (1) {
+    clientlen = sizeof(clientaddr); 
+    connfd = Accept(listenfd, (SA *)&clientaddr, &clientlen);
+    hp = Gethostbyaddr((const char *)&clientaddr.sin_addr.s_addr,
+		       sizeof(clientaddr.sin_addr.s_addr), AF_INET);
+    haddrp = inet_ntoa(clientaddr.sin_addr);
+    printf("server connected to %s (%s)\n", hp->h_name, haddrp);
+    fprintf(log_file, "server connected to %s (%s)\n", hp->h_name, haddrp);
+    fflush(log_file);
+    create_worker(connfd);
+  }
+
+  fclose(log_file);
+}
+
