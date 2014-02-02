@@ -1,0 +1,6 @@
+build: badbuf.c
+	gcc badbuf.c -o badbuf
+attack: build
+	./badbuf < input
+clean:
+	rm -i badbuf
