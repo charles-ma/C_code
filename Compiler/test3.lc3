@@ -1,0 +1,6 @@
+fun ADD SP, SP, -1; push return value
+ADD SP, SP, -1; push return address
+STR R7, SP, 0
+ADD SP, SP, -1; push frame pointer
+STR FP, SP, 0
+ADD FP, SP, -1; set frame pointer

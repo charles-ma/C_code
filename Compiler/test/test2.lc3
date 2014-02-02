@@ -1,0 +1,18 @@
+fun ADD SP, SP, -1; push return value
+ADD SP, SP, -1; push return address
+STR R7, SP, 0
+ADD SP, SP, -1; push frame pointer
+STR FP, SP, 0
+ADD FP, SP, -1; set frame pointer
+;;  return a;
+LDR R0, FP, 4; read a
+STR R0, FP, 3; write RV
+;; epilogue
+1
+STR FP, SP, 0; pop frame pointer
+ADD SP, SP, 1
+STR R7, SP, 0; pop return address
+ADD SP, SP, 1
+ADD SP, SP, 1; pop return value
+ADD SP, SP, 1; pop parameter
+RET; done!

@@ -1,0 +1,5 @@
+The program is called Checkers. It will accept one or zero parameters. The parameter indicates the number of the sub processes.
+
+Eg, if you call the program using "./Checkers 5", it will fork 5 times(say, there will be 6 processes altogether). Every process will print out the board every 10000 steps. Due to the random algorithm of the program, sometimes it will take time to finish a game, so I set a limit to the amount steps of every process, if it did not finish in 300000 steps, it would be terminated and print out "OVER TIME" rather than "RED WIN!" of "BLACK WIN!".
+
+Each time a sub process finishes, it will send a message to the parent process through the pipe. The parent process will print out the result of each process at the end of the whole program.

@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+  float start_tem = 0.0, tem_fluc = 0.0, curr_tem = 0.0, sum_tem = 0.0, ave_tem = 0.0, high_tem = 0.0, low_tem = 0.0;
+  int ran_num = 0, hot_streak = 0, cold_streak = 0, hotter = 0, colder = 0;
+  printf("Please enter a start temperature:");
+  scanf("%f", &start_tem);
+  if(start_tem < 0)
+    return 0;
+  curr_tem = start_tem;
+  sum_tem = start_tem;
+  srandom(time(0));
+  int i;
+  for(i = 0; i < 365, ++i){
+    sleep(1);
+    ran_num = random()%(41);
+    tem_fluc = ran_num / 10.0;
+    if(tem_fluc < 0){
+      
+    }
+    curr_tem += tem_fluc;
+    if(curr_tem < low_tem)
+      low_tem = curr_tem;
+    if(curr_tem > high_tem)
+      high_tem = curr_tem;
+    sum_tem += curr_tem;
+    ave_tem = sum_tem / (i + 2);
+    printf("The current temperature is: %f\n", curr_tem);
+    if(curr_tem > start_tem)
+      printf("Higher than the init temperature by %f degrees\n", curr_tem - start_tem);
+    else if(curr_tem < start_tem)
+      printf("Lower than the init temperature by %f degrees\n", start_tem - curr_tem);
+    else
+      printf("Equal to the init temperature\n");
+    printf("The highest temperature is: %f\nThe lowest temperature is: %f\nThe average temperature is: %f\n", high_tem, low_tem, ave_tem);
+  }
+}

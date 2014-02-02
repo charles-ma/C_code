@@ -1,0 +1,6 @@
+int undeclared (int x, int y) {
+  int a = 11;
+  int b = c + 3;
+  return b;
+}
+

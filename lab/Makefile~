@@ -1,0 +1,9 @@
+all: LockTest AddArray
+LockTest: lockTest.c
+	gcc -pthread -o lockTest lockTest.c
+AddArray: addArray.c 
+	gcc -o addArray addArray.c
+run: addArray lockTest
+	./lockTest & ./addArray 
+clean:
+	rm -i addArray lockTest

@@ -1,0 +1,8 @@
+all:	anagramSolver cross-word
+anagramSolver:
+	cc -o anagramSolver anagramSolver.c
+cross-word:
+	cc -o cross-word cross-word.c
+clean:
+	rm anagram
+	rm cross-word

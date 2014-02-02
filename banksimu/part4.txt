@@ -1,0 +1,23 @@
+2 threads
+transactions	test 1	test 2	test 3	test 4	test 5	test 6	test 7	test 8	test 9	test 10	TOTAL # FAILURES
+10,000		c    	c    	c    	c    	c    	c    	c    	c    	c    	c    	0		      	      	      	      	      	 
+100,000		c	c	c	c	c	c	c	c	c	c	0	
+1,000,000	f	c	c	c	c	c	c	c	c	c	1
+
+
+3 threads
+transactions     test 1 test 2 test 3 test 4 test 5 test 6 test 7 test 8 test 9 test 10 TOTAL # FAILURES
+10,000		 c    	c      c      c	     c	    c	   c	  c    	 c    	c    	0	
+100,000		 c	c      c      c	     c	    c	   c	  c	 c	c	0
+1,000,000	 c	f      c      c	     f	    f	   c	  c	 c	f	4	 
+
+
+4 threads
+transactions     test 1 test 2 test 3 test 4 test 5 test 6 test 7 test 8 test 9 test 10 TOTAL # FAILURES
+10,000		 c    	c      c      c	     c	    c	   c	  c    	 c    	c    	0		 
+100,000		 c	f      c      f	     c	    c	   c	  f	 c	c	3		 
+1,000,000	 f	c      f      f	     f	    f	   c	  f	 f	f	8
+
+
+Analysis:
+More calculation, more failures. More threads, more failures.

@@ -1,0 +1,2 @@
+gcc -o cross-word -g cross-word.c
+./cross-word

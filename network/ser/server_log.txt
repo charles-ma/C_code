@@ -1,0 +1,55 @@
+GET /index.html HTTP/1.1
+Host:127.0.0.1
+
+HTTP/1.1 200 OK
+server connected to localhost (127.0.0.1)
+GET /index.html HTTP/1.1
+Host:127.0.0.1
+If-Modified-Since: 20/04/2013 17:59:55
+
+HTTP/1.1 304 Not Modified
+server connected to localhost (127.0.0.1)
+GET /in HTTP/1.1
+Host:127.0.0.1
+
+HTTP/1.1 404 Not Found
+server connected to localhost (127.0.0.1)
+GET /index.html HTTP/1.1
+Host:127.0.0.1
+
+HTTP/1.1 200 OK
+server connected to localhost (127.0.0.1)
+GET http://videosearch.ubuntu.com/v0/search HTTP/1.1
+Host: videosearch.ubuntu.com
+User-Agent: Unity Video Lens Remote Scope v0.4
+Connection: Keep-Alive
+
+HTTP/1.1 404 Not Found
+server connected to localhost (127.0.0.1)
+GET /index3.html HTTP/1.1
+Host:127.0.0.1
+
+HTTP/1.1 404 Not Found
+server connected to localhost (127.0.0.1)
+GET /index2.html HTTP/1.1
+Host:127.0.0.1
+
+HTTP/1.1 200 OK
+server connected to localhost (127.0.0.1)
+GET /index1.html HTTP/1.1
+Host:127.0.0.1
+
+HTTP/1.1 200 OK
+server connected to localhost (127.0.0.1)
+GET /index.html HTTP/1.1
+Host:127.0.0.1
+If-Modified-Since: 20/04/2013 17:59:55
+
+HTTP/1.1 304 Not Modified
+server connected to localhost (127.0.0.1)
+GET http://videosearch.ubuntu.com/v0/search HTTP/1.1
+Host: videosearch.ubuntu.com
+User-Agent: Unity Video Lens Remote Scope v0.4
+Connection: Keep-Alive
+
+HTTP/1.1 404 Not Found

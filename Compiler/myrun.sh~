@@ -1,0 +1,6 @@
+make
+./compiler test3.c
+cat test3.lc3
+
+
+
