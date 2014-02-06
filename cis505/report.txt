@@ -1,0 +1,32 @@
+1. How to carry out the experiment
+   
+   To carry out the experiment, you have to run two shell scripts(expr1.sh and expr2.sh). 
+   
+   When expr1.sh is invoked, it will try to re-compile the syscall_writer.c to syscall_writer and then invoke another shell script named sys.sh to invoke the syscall_writer 50 times and also time its execution.
+   
+   When expr2.sh is invoked, it will try to re-compile the stdlibrary_writer.c to stdlibrary_writer and then invoke another shell script named std.sh to invoke the stdlibrary_writer 50 times and also time its execution.
+
+
+2. The result
+   
+   The time command will display the real time(execution end time subtract execution start time), the user cpu time(time spent in user mode), the system cpu time(time spent in kernel mode) separately. Sample runs are as follows:
+
+   experiment1(systemcall.c):
+   real	0m1.583s	 
+   user	0m0.049s	
+   sys	0m1.434s
+
+   experiment2(stdlibrary.c):
+   real	0m1.005s
+   user	0m0.680s
+   sys	0m0.048s
+
+   We can see from the result that the real execution time of systemcall is longer than stdlibrary, it means using stdlibrary is more time-efficient.
+   For systemcall, the user cpu time is shorter but the system cpu time is much longer than that of stdlibrary. This means calling a stdlibrary IO function will execute more code in user mode but make less system calls and thus reduce the total time effectively.
+
+
+3. Answers to the questions
+   
+   (1) There are variations of execution time across the successive invocation of the same program. Because the system environment is different during each execution, there may be lots of other processes running, and the IO operations may consume different amount of time too.
+
+   (2) In the case above(writing more than 5000 chars), buffering strategy is better than system calls. But suppose we only have a very small amount of output, such as one char, the conclusion may change.
