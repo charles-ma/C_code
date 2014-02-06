@@ -18,7 +18,7 @@ void goodbye(char *str) {
 }
 
 main(){
-  char name[128], pw[128]; /* passwords are short! */
+  char name[128], pw[128]; /* passwords are eight characters - double this */
   char *good = "Welcome to The Machine!\n";
   char *evil = "Invalid identity, exiting!\n";
 
